@@ -14,19 +14,11 @@ const images = [
 ];
 var frame = document.querySelector('.gallery');
 function animalFunction() {
-  var animal;
-  let li;
-  var i = 0;
-    images.forEach(element => {  
-      li = document.createElement('li');
-      animal = document.createElement("IMG"),
-      animal.src = images[i].url,
-      animal.alt = images[i].alt,
-      animal.width = "300",
-      console.log(animal),
-      li.appendChild(animal),
-      frame.appendChild(li)
-      i++   
+  var i = 2;
+  images.forEach(element => {
+    var string = `<li><img width="300" src="${images[i].url}" alt="${images[i].alt}"></li>`;
+    frame.insertAdjacentHTML("afterbegin", string);
+    i--   
   });
 }
 animalFunction()
