@@ -13,4 +13,3 @@ function changeColor(){
   console.log(colorText);
   console.log(colorText);
 }
-
