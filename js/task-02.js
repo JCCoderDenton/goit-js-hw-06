@@ -6,6 +6,5 @@ const ingredients = [
   'Herbs',
   'Condiments',
 ];
-let list = document.querySelector('#ingredients');
-let li;
-ingredients.forEach(element => {li = document.createElement('li'),  li.textContent = element, li.className = "Item" ,list.appendChild(li)});
+const listToHtml = document.getElementById('ingredients');
+listToHtml.innerHTML = `${ingredients.map(element => `<li>${element}</li>`).join('')}`;
