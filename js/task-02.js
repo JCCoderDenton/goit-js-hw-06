@@ -6,5 +6,10 @@ const ingredients = [
   'Herbs',
   'Condiments',
 ];
-const listToHtml = document.getElementById('ingredients');
-listToHtml.innerHTML = `${ingredients.map(element => `<li>${element}</li>`).join('')}`;
+ingredients.map(element => {
+  var li = document.createElement("li");
+      li.className = "finalBlock";
+      li.innerHTML = element;
+      document.getElementById("ingredients").appendChild(li);
+    }
+  )
