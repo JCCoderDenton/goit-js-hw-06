@@ -1,22 +1,85 @@
-const categories = Array.from(document.querySelectorAll('ul#categories>li>ul'));
-const listAnimal = Array.from(document.querySelector("li.item:nth-child(1)").querySelectorAll("ul>li"));
-const listProduct = Array.from(document.querySelector("li.item:nth-child(2)").querySelectorAll("ul>li"));
-const listTech = Array.from(document.querySelector("li.item:nth-child(3)").querySelectorAll("ul>li"));
-var i = 0;
-let categoriesNumber = countingElements(categories,0,"ul");
-let animalsNumber = countingElements(listAnimal,0,"li");
-let productNumber = countingElements(listProduct,0,"li");
-let techNumber = countingElements(listTech,0,"li");
 
-function countingElements(elements,Number,tag) {
-    elements.forEach(tag =>{return Number += 1});
-    const header = document.getElementsByClassName("item")[i].childNodes[1].innerHTML;
-    if (tag == "ul"){
-        console.log("Number of categories: ",Number);
+const categories = Array.from(document.querySelectorAll('ul#categories'));   // Реалізація через foreach
+
+categories.forEach(countingElements);
+    function countingElements() {
+        let item = 0;
+        const nubbersElements = [];
+        const categorysArray = [];
+        categories[0].childNodes.forEach(function(element, i) {
+            if (categories[0].childNodes[i].className == "item"){
+                item++;
+                let elementNumber = 0;
+                let categorys = "";
+                categories[0].childNodes[i].childNodes.forEach(function(element, k) {
+                    if (categories[0].childNodes[i].childNodes[k].localName == "ul" ){
+                        categories[0].childNodes[i].childNodes[k].childNodes.forEach(function(element, j) {
+                            if (categories[0].childNodes[i].childNodes[k].childNodes[j].localName == "li" ){
+                                elementNumber++;
+                            }                            
+                        });
+                    }
+                    if (categories[0].childNodes[i].childNodes[k].localName == "h2" ){
+                        categorys = categories[0].childNodes[i].childNodes[k].innerText;
+                    }
+                });
+                
+                categorysArray.push(categorys);
+                nubbersElements.push(elementNumber);
+            }
+        });
+        console.log("Number of categories: ",item);
+        nubbersElements.forEach(function(element,f) {
+            console.log("Category: ",categorysArray[f]);
+            console.log("Elements: ",nubbersElements[f]);
+        });
     }
-    else{
-        console.log("Category test: ",header);
-        console.log("Elements test: ",Number);
-        i++;
+
+
+
+
+/*
+const categories = Array.from(document.querySelectorAll('ul#categories')); // Реалізація через for
+
+categories.forEach(countingElements);
+    function countingElements() {
+        let item = 0;
+        const nubbersElements = [];
+        const categorysArray = [];
+        for (let i=0; i < categories[0].childNodes.length; i++){
+            if (categories[0].childNodes[i].className == "item"){
+                item++;
+                let element = 0;
+                let categorys = "";
+                for (let k=0; k < categories[0].childNodes[i].childNodes.length; k++){
+                    if (categories[0].childNodes[i].childNodes[k].localName == "ul" ){
+                        for (let j=0; j < categories[0].childNodes[i].childNodes[k].childNodes.length; j++){
+                            if (categories[0].childNodes[i].childNodes[k].childNodes[j].localName == "li" ){
+                                element++;
+                            }
+                        }
+                    }
+                    if (categories[0].childNodes[i].childNodes[k].localName == "h2" ){
+                        categorys = categories[0].childNodes[i].childNodes[k].innerText;
+                    }
+                }
+                categorysArray.push(categorys);
+                nubbersElements.push(element);
+            }
+        }
+    console.log("Number of categories: ",item);
+    for (let f = 0; f < categorysArray.length; f++){
+        console.log("Category: ",categorysArray[f]);
+        console.log("Elements: ",nubbersElements[f]);
     }
 }
+*/
+/*
+console.log("Number of categories: ",categories[0].childElementCount);      // Реалізація без циклів
+console.log("Category: ",categories[0].childNodes[1].childNodes[1].innerHTML);
+console.log("Elements: ",categories[0].childNodes[1].childNodes[3].childElementCount);
+console.log("Category: ",categories[0].childNodes[3].childNodes[1].innerHTML);
+console.log("Elements: ",categories[0].childNodes[3].childNodes[3].childElementCount);
+console.log("Category: ",categories[0].childNodes[5].childNodes[1].innerHTML);
+console.log("Elements: ",categories[0].childNodes[5].childNodes[3].childElementCount);
+*/
