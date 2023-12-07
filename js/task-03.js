@@ -13,12 +13,13 @@ const images = [
   },
 ];
 var frame = document.querySelector('.gallery');
+var string = "";
 function animalFunction() {
   var i = 2;
   images.forEach(element => {
-    var string = `<li><img width="300" src="${images[i].url}" alt="${images[i].alt}"></li>`;
-    frame.insertAdjacentHTML("afterbegin", string);
+    string = string + `<li><img width="300" src="${images[i].url}" alt="${images[i].alt}"></li>`;
     i--   
   });
+  frame.insertAdjacentHTML("afterbegin", string);
 }
 animalFunction()
