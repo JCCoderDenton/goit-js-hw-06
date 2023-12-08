@@ -12,14 +12,6 @@ const images = [
     alt: 'Group of Horses Running',
   },
 ];
-var frame = document.querySelector('.gallery');
-var string = "";
-function animalFunction() {
-  var i = 2;
-  images.forEach(element => {
-    string = string + `<li><img width="300" src="${images[i].url}" alt="${images[i].alt}"></li>`;
-    i--   
-  });
-  frame.insertAdjacentHTML("afterbegin", string);
-}
-animalFunction()
+let frame = document.querySelector('.gallery');
+const imageCode = images.map((element, i, images) => `<li><img width="300" src="${images[i].url}" alt="${images[i].alt}"></li>`);
+frame.insertAdjacentHTML("afterbegin", imageCode);
