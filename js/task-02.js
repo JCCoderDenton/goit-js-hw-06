@@ -1,3 +1,4 @@
+const list = document.getElementById("ingredients");
 const ingredients = [
   'Potatoes',
   'Mushrooms',
@@ -6,10 +7,12 @@ const ingredients = [
   'Herbs',
   'Condiments',
 ];
-ingredients.map(element => {
-  var li = document.createElement("li");
-      li.className = "finalBlock";
-      li.innerHTML = element;
-      document.getElementById("ingredients").appendChild(li);
-    }
-  )
+
+const ingredientsCode = ingredients.map((element, i) => {
+  let li = document.createElement('li');
+  li.innerText = element;
+  li.className= "item";
+  return li;
+});
+
+list.append(...ingredientsCode);
