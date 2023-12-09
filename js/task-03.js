@@ -14,4 +14,5 @@ const images = [
 ];
 let frame = document.querySelector('.gallery');
 const imageCode = images.map((element, i, images) => `<li><img width="300" src="${images[i].url}" alt="${images[i].alt}"></li>`);
-frame.insertAdjacentHTML("afterbegin", imageCode);
+console.log(imageCode)
+frame.insertAdjacentHTML("afterbegin", imageCode.join("") );
